@@ -18,7 +18,8 @@ import java.util.List;
 @Table(name = "users")
 public class User implements UserDetails {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", updatable = false, nullable = false)
     private Integer id;
     private String username;
     private String password;
@@ -38,6 +39,8 @@ public class User implements UserDetails {
     public String getUsername() {
         return username;
     }
+
+    public String getRoles() { return role; }
 
     @Override
     public boolean isAccountNonExpired() {
