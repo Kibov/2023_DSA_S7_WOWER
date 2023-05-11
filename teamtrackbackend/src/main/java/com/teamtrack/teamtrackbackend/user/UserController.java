@@ -7,7 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/api/v1/auth/users")
+@CrossOrigin(origins = "http://localhost:4200")
 public class UserController {
 
     private final UserRepository userRepository;
@@ -17,15 +18,20 @@ public class UserController {
     }
 
     @GetMapping
-    public ResponseEntity<List<String>> getUsers() {
+    public ResponseEntity<List<User>> getUsers() {
         List<User> userList = userRepository.findAll();
         List<String> userStringList = new ArrayList<>();
         for (User user : userList) {
             String userString = "Name: " + user.getUsername() + ", Password: " + user.getPassword() + ", Role: " + user.getRole();
             userStringList.add(userString);
         }
-        return ResponseEntity.ok(userStringList);
+        return ResponseEntity.ok(userList);
     }
 
+    @GetMapping("/test")
+    public String home()
+    {
+        return "this is home";
+    }
 
 }

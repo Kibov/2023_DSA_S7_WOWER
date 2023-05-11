@@ -5,12 +5,12 @@ import { UserFormComponent } from './user-form/user-form.component';
 
 const routes: Routes = [
   { path: 'users', component: UserListComponent },
-  { path: 'login', component: UserFormComponent }
+  { path: 'login', component: UserFormComponent },
+  { path: '', component: UserFormComponent, pathMatch: 'full' },
 ];
-
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

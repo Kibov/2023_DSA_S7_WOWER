@@ -10,8 +10,9 @@
             name="username" 
             placeholder="Enter your username"
             required #username="ngModel">
-          <div [hidden]="!username.pristine" class="alert alert-danger">username is required</div>
         </div>
+        <div [hidden]="!username.pristine" class="alert alert-danger">username is required</div>
+
         <div class="form-group">
           <label for="name">password</label>
           <input type="text" [(ngModel)]="user.password" 

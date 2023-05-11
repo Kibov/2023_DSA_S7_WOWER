@@ -20,7 +20,10 @@ export class UserFormComponent {
   }
 
   onSubmit() {
-    this.userService.save(this.user).subscribe((result) => console.log(result));
+    this.userService.login(this.user).subscribe((result) => {
+      this.userService.userToken = result.token;
+      this.gotoUserList();
+    });
   }
 
   gotoUserList() {
