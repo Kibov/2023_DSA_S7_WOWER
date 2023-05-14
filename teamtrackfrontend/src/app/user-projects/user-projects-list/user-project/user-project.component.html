@@ -1,0 +1,12 @@
+<a routerLink="/projects" class="list-group-item clearfix" (click)="onSelected()">
+  <div class="pull-left">
+    <h4 class="list-group-item-heading">
+       {{ project.nameOfProj }}
+    </h4>
+  </div>
+<p class="contentDisplayed" *ngIf="isSelected">{{ project.description }} | Date of creation: {{ project.dateOfStart | date }}
+  <button class="btn-danger"
+  routerLink="/issues">More</button>
+</p>
+
+</a>

@@ -1,0 +1,17 @@
+.signup{
+  display: flex;
+  justify-content: center;
+}
+.usernameclass{
+  display: flex;
+  justify-content: center;
+
+}
+.passwordclass{
+  display: flex;
+  justify-content: center;
+
+}
+.btn{
+  margin-left : 26%;
+}
