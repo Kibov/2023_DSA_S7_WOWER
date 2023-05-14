@@ -1,5 +1,6 @@
 package com.teamtrack.teamtrackbackend.project;
 
+import com.teamtrack.teamtrackbackend.group.Groups;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,10 +20,14 @@ public class Project {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", updatable = false, nullable = false)
     private Integer id;
-    private Integer group_id;
+
     private String project_name;
     private String description;
     private Timestamp created_at;
     private Timestamp ended_at;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "group_id")
+    private Groups groups;
 
 }
