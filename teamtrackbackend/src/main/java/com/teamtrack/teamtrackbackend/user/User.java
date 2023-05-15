@@ -43,7 +43,7 @@ public class User implements UserDetails {
 
     @Override
     public String getUsername() {
-        return username;
+        return String.valueOf(id);
     }
 
     public String getRoles() { return role; }
