@@ -41,9 +41,13 @@ public class User implements UserDetails {
         return password;
     }
 
+    public String idAsString(){
+        return String.valueOf(id);
+    }
+
     @Override
     public String getUsername() {
-        return String.valueOf(id);
+        return username;
     }
 
     public String getRoles() { return role; }

@@ -12,4 +12,7 @@ public interface ProjectRepository extends JpaRepository<Project, Integer> {
 
     @Query("SELECT p FROM Project p JOIN FETCH p.groups g JOIN FETCH g.users u WHERE u.id = :userId")
     List<Project> findByUserId(@Param("userId") Integer userId);
+
+    @Query("SELECT p FROM Project p JOIN FETCH p.groups g JOIN FETCH g.users u WHERE u.id = :userId AND p.id = :projectId")
+    Project findByProjectIdUserId(@Param("projectId")Integer projectId, @Param("userId") Integer userId);
 }

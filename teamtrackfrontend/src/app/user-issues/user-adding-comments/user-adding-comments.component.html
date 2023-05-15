@@ -1,0 +1,87 @@
+<div class="buttonAdd">
+  <button class="btn btn-info" (click)="onClick()">
+    <span>&#43;</span> New issue
+  </button>
+</div>
+<div class="container">
+  <form>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group text-center">
+          <label [hidden]="!notVisible" for="userName">Username</label>
+          <input
+            [hidden]="!notVisible"
+            type="text"
+            id="userName"
+            class="form-control"
+            placeholder="Enter your username"
+            #userNameInput
+            (input)="isUserNameEmpty=userNameInput.value"
+            [value]="isUserNameEmpty"
+          />
+        </div>
+      </div>
+      <div class="col-md-6 text-center">
+        <div class="form-group">
+          <label [hidden]="!notVisible" for="topic">Topic</label>
+          <input
+            [hidden]="!notVisible"
+            type="text"
+            id="topic"
+            class="form-control"
+            placeholder="Enter topic"
+            #topicInput
+            (input)="isTopicEmpty=topicInput.value"
+            [value]="isTopicEmpty"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="row display-flex justify-content-center">
+      <div class="col-md-6 text-center">
+        <div class="form-group text-center">
+          <label [hidden]="!notVisible" for="prio">Priority</label>
+          <select class="form-control"
+          [hidden]="!notVisible"
+          #selectedPrio
+          (input)="selectedOption=selectedPrio.value"
+          [value]="selectedOption">
+            <option value="">--select priority--</option>
+            <option value="High">High</option>
+            <option value="Medium">Medium</option>
+            <option value="Low">Low</option>
+
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <div class="form-group">
+          <label [hidden]="!notVisible" for="content">Content</label>
+          <textarea
+            [hidden]="!notVisible"
+            id="content"
+            class="form-control"
+            rows="3"
+            placeholder="Type your comment here"
+            #contentInput
+            (input)="isContentEmpty=contentInput.value"
+            [value]="isContentEmpty"
+          ></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <button [hidden]="!notVisible"
+        [disabled]="!isUserNameEmpty || !isTopicEmpty || !selectedOption || !isContentEmpty"
+        type="submit"
+        class="btn btn-aqua"
+        (click)="onAddIssue()">
+          Submit
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

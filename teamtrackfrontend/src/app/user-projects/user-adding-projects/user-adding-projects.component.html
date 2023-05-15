@@ -1,0 +1,52 @@
+<div class="buttonAdd">
+  <button class="btn btn-info" (click)="onClick()">
+    <span>&#43;</span> New Project
+  </button>
+</div>
+<div class="container">
+  <form>
+    <div class="row" style="text-align: left;">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label [hidden]="!notVisible" for="projName">Project Name</label>
+          <input
+            [hidden]="!notVisible"
+            type="text"
+            id="projName"
+            class="form-control"
+            placeholder="Enter project name"
+            #projNameInput
+            (input)="isProjectNameEmpty=projNameInput.value"
+            [value]="isProjectNameEmpty"
+          />
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="form-group">
+          <label [hidden]="!notVisible" for="description">Description</label>
+          <textarea
+            [hidden]="!notVisible"
+            id="description"
+            rows="3"
+            class="form-control"
+            placeholder="Enter description"
+            #projDescriptionInput
+            (input)="isDescriptionEmpty=projDescriptionInput.value"
+            [value]="isDescriptionEmpty">
+        </textarea>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <button [hidden]="!notVisible"
+        [disabled]="!isProjectNameEmpty || !isDescriptionEmpty"
+        type="submit"
+        class="btn btn-aqua"
+        (click)="onAddProject()">
+          Create
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

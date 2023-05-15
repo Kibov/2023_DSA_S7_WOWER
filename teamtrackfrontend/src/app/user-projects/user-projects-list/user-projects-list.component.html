@@ -1,0 +1,11 @@
+<ul class="list-group">
+  <app-user-adding-projects
+    (projAdded)="onProjAdded($event)"
+  ></app-user-adding-projects>
+  <app-user-project
+    *ngFor="let proj of projects"
+    [project]="proj"
+    (projectSelected)="onProjSelected(proj)"
+  >
+  </app-user-project>
+</ul>
