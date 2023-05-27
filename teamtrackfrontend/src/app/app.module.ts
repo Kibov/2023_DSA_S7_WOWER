@@ -17,6 +17,7 @@ import { UserProjectsComponent } from './user-projects/user-projects.component';
 import { UserProjectsListComponent } from './user-projects/user-projects-list/user-projects-list.component';
 import { UserAddingProjectsComponent } from './user-projects/user-adding-projects/user-adding-projects.component';
 import { UserProjectComponent } from './user-projects/user-projects-list/user-project/user-project.component';
+import { CommentsDetailsComponent } from './user-issues/comments-details/comments-details.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { UserProjectComponent } from './user-projects/user-projects-list/user-pr
     UserProjectsListComponent,
     UserAddingProjectsComponent,
     UserProjectComponent,
+    CommentsDetailsComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [UserService],

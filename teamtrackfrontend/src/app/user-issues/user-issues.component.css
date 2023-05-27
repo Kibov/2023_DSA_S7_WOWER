@@ -3,3 +3,26 @@
   text-align: center;
   justify-content: center;
 }
+.hereChoose {
+  display: flex;
+  justify-content: center;
+  border: 3px solid #007bff93;
+  padding: 20px;
+}
+.hereChoose:first-child {
+  border-right: none;
+}
+.hereInfo {
+  display: flex;
+  justify-content: center;
+  border: 3px solid #007bff93;
+}
+.container {
+  margin-bottom: 20px;
+}
+.selectComment {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  font-weight: bold;
+}

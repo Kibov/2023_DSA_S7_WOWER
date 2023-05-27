@@ -1,9 +1,18 @@
 <a routerLink="/issues" class="list-group-item clearfix" (click)="onSelected()">
   <div class="pull-left">
-    <h4 class="list-group-item-heading">
-      User: {{ comment.userName }} | topic: {{ comment.topic }} | prio:
-      {{ comment.prio }}
-    </h4>
+    <table class="list-group-item-heading">
+      <th>User:</th>
+      {{
+        comment.userName
+      }}
+      <th><span> | </span> Topic: <span> </span></th>
+      {{
+        comment.topic
+      }}
+      <th><span> | </span>Prio: <span> </span></th>
+      {{
+        comment.prio
+      }}
+    </table>
   </div>
-  <p class="contentDisplayed" *ngIf="isSelected">{{ comment.content }}</p>
 </a>

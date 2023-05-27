@@ -4,14 +4,11 @@ import { Comment } from '../comment.model';
   selector: 'app-user-issues',
   templateUrl: './user-issues.component.html',
   styleUrls: ['./user-issues.component.css'],
-
 })
 export class UserIssuesComponent implements OnInit {
   selectedComment!: Comment;
-  constructor(){}
+  constructor() {}
   ngOnInit(): void {
     console.log('xd');
-
   }
-
 }

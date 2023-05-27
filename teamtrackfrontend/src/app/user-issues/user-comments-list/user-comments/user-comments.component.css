@@ -1,8 +1,11 @@
-.list-group-item{
+.list-group-item {
   margin-top: 20px;
 }
 
-.contentDisplayed{
+.contentDisplayed {
   color: black;
-  font-family:Arial, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
+}
+th {
+  white-space: break-spaces;
 }
