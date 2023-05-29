@@ -7,6 +7,7 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { Comment } from '../../../comment.model';
+import { Issue } from 'src/app/interfaces/issue';
 @Component({
   selector: 'app-user-comments',
   templateUrl: './user-comments.component.html',
@@ -14,7 +15,7 @@ import { Comment } from '../../../comment.model';
   encapsulation: ViewEncapsulation.None,
 })
 export class UserCommentsComponent implements OnInit {
-  @Input() comment!: Comment;
+  @Input() comment!: Issue;
 
   @Output() commentSelected = new EventEmitter<void>();
   constructor() {}

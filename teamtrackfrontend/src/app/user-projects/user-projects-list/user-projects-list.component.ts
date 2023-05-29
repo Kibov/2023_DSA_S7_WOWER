@@ -15,11 +15,13 @@ export class UserProjectsListComponent implements OnInit {
   dateOfCreation: Date = new Date();
   projects: ProjectInterface[] = [
     {
+      id: 1,
       project_name: 'Proj1',
       description: 'Proj',
       created_at: this.dateOfCreation,
     },
     {
+      id: 2,
       project_name: 'Proj2',
       description: 'Proj2',
       created_at: this.dateOfCreation,

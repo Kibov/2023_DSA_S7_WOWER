@@ -21,10 +21,9 @@ export class UserProjectComponent implements OnInit {
     } else {
       this.isSelected = false;
     }
-    this.projectSelected.emit();
   }
 
   goToMore() {
-    this.router.navigateByUrl('/issues');
+    this.projectSelected.emit();
   }
 }

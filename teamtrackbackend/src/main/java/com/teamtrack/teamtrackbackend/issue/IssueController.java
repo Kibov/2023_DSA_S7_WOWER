@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/v1/auth/issue")
@@ -43,6 +44,16 @@ public class IssueController {
         else{
             return ResponseEntity.ok(issue);
         }
+    }
+
+    @GetMapping("/proj/{projId}")
+    public ResponseEntity<List<Issue>> findByProjId(@PathVariable Integer projId){
+        List<Issue> issueList = issueRepository.findAll();
+        List<Issue> listToReturn = issueList.stream().filter(issue ->
+                projId.equals(issue.getProject().getId())
+        ).collect(Collectors.toList());
+
+        return  ResponseEntity.ok(listToReturn);
     }
 
     @PutMapping("/{id}")
@@ -83,6 +94,8 @@ public class IssueController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         else {
+            User user = userRepository.getReferenceById(issuePost.getUser_id());
+            Project project = projectRepository.getReferenceById(issuePost.getProject_id());
             if (issuePost.getDescription().isEmpty() || issuePost.getStatus().isEmpty() || issuePost.getId().describeConstable().isEmpty() ){
                 return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
             }
@@ -93,6 +106,8 @@ public class IssueController {
             if (!issuePost.getStatus().isEmpty()){
                 toSave.setStatus(issuePost.getStatus());
             }
+            toSave.setUser(user);
+            toSave.setProject(project);
             issueRepository.save(toSave);
             return new ResponseEntity<>(HttpStatus.OK);
         }
