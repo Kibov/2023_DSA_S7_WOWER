@@ -1,0 +1,13 @@
+.list-group-item{
+  margin-top: 20px;
+}
+
+.contentDisplayed{
+  color: black;
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+.center{
+  display: flex;
+  justify-content: center;
+}

@@ -1,0 +1,11 @@
+.list-group-item {
+  margin-top: 20px;
+}
+
+.contentDisplayed {
+  color: black;
+  font-family: Arial, Helvetica, sans-serif;
+}
+th {
+  white-space: break-spaces;
+}

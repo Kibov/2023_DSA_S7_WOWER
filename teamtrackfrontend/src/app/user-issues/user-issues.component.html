@@ -1,0 +1,23 @@
+<h1 class="issuesHeader">Issues</h1>
+<div class="row text-center">
+  <div class="col-md-7" style="margin-top: 20px"></div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="hereChoose col-sm-5">
+      <app-user-comments-list
+        (commentWasSelected)="selectedComment = $event"
+      ></app-user-comments-list>
+    </div>
+    <div class="hereInfo col-sm-7">
+      <app-comments-details
+        *ngIf="selectedComment; else infoText"
+        [comment]="selectedComment"
+      ></app-comments-details>
+      <ng-template #infoText>
+        <p class="selectComment">Please select comment!</p>
+      </ng-template>
+    </div>
+    <!-- (commentWasSelected)="selectedComment = $event" -->
+  </div>
+</div>

@@ -1,4 +1,5 @@
 package com.teamtrack.teamtrackbackend.user;
+import com.teamtrack.teamtrackbackend.group.Groups;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -8,7 +9,9 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @Builder
@@ -25,6 +28,9 @@ public class User implements UserDetails {
     private String password;
     private String role;
 
+    @ManyToMany(mappedBy = "users")
+    private Set<Groups> groups = new HashSet<>();
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(this.role));
@@ -33,6 +39,10 @@ public class User implements UserDetails {
     @Override
     public String getPassword() {
         return password;
+    }
+
+    public String idAsString(){
+        return String.valueOf(id);
     }
 
     @Override
@@ -62,3 +72,4 @@ public class User implements UserDetails {
         return true;
     }
 }
+

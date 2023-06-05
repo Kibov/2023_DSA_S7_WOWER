@@ -1,0 +1,21 @@
+<div class="userName row">
+  <div class="col-xs-12">
+    <p>Creator: {{ comment.user.username }}</p>
+  </div>
+</div>
+<div class="topic row">
+  <div class="col-xs-12">
+    <label for="">Topic: {{ comment.description }}</label>
+  </div>
+</div>
+<div class="comment row">
+  <div class="col-xs-12 text-center">
+    <textarea
+      rows="12"
+      cols="60"
+      style="padding: 12px; margin: 10px"
+      readonly
+      >{{ comment.description }}</textarea
+    >
+  </div>
+</div>

@@ -1,0 +1,14 @@
+<h1 class="projectHeader"> Projects </h1>
+<div class="col-md-7" style="margin-top: 20px">
+  <app-user-adding-projects
+  *ngIf="selectedProject"
+  [project]="selectedProject"
+  ></app-user-adding-projects>
+</div>
+<div class="row text-center">
+  <div class="col">
+    <app-user-projects-list
+    (projWasSelected)="outputProject($event)"
+    ></app-user-projects-list>
+  </div>
+</div>
