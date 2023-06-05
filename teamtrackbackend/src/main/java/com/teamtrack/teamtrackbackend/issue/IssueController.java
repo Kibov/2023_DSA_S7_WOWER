@@ -83,6 +83,7 @@ public class IssueController {
             toSave.setStatus(issue.getStatus());
             toSave.setUser(user);
             toSave.setProject(project);
+            toSave.setName(issue.getName());
             issueRepository.save(toSave);
             return new ResponseEntity<>(toSave, HttpStatus.CREATED);
         }
@@ -108,6 +109,7 @@ public class IssueController {
             }
             toSave.setUser(user);
             toSave.setProject(project);
+            toSave.setName(issuePost.getName());
             issueRepository.save(toSave);
             return new ResponseEntity<>(HttpStatus.OK);
         }

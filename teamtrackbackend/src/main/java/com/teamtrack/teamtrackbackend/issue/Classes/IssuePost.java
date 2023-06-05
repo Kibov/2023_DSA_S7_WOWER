@@ -9,6 +9,8 @@ public class IssuePost {
     private Integer project_id;
     private Integer user_id;
 
+    private String name;
+
     public Integer getId() {
         return id;
     }
@@ -32,6 +34,10 @@ public class IssuePost {
     public void setStatus(String status) {
         this.status = status;
     }
+
+    public void setName(String name) { this.name = name; }
+
+    public String getName() { return name; }
 
     public Integer getProject_id() {
         return project_id;

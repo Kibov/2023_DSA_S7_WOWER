@@ -21,6 +21,7 @@ public class Issue {
     private Integer id;
     private String description;
     private String status;
+    private String name;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "project_id")
@@ -69,5 +70,9 @@ public class Issue {
     public void setUser(User user) {
         this.user = user;
     }
+
+    public void setName(String name) { this.name = name; }
+
+    public String getName() { return name; }
 
 }
