@@ -8,7 +8,9 @@ import {
   ViewChild,
 } from '@angular/core';
 import { Comment } from 'src/app/comment.model';
-import { Issue } from 'src/app/interfaces/issue';
+import { Issue, IssueToSave } from 'src/app/interfaces/issue';
+import { IssueService } from 'src/app/services/issue/issue.service';
+import { ProjectDataService } from 'src/app/services/project/project-data.service';
 @Component({
   selector: 'app-user-adding-comments',
   templateUrl: './user-adding-comments.component.html',
@@ -16,7 +18,7 @@ import { Issue } from 'src/app/interfaces/issue';
 })
 export class UserAddingCommentsComponent implements OnInit {
   @Input() comment!: Issue;
-  constructor() {}
+  constructor(private projectData: ProjectDataService) {}
   isUserNameEmpty: string = '';
   isTopicEmpty: string = '';
   isContentEmpty: string = '';
@@ -26,7 +28,7 @@ export class UserAddingCommentsComponent implements OnInit {
   @ViewChild('topicInput') addTopicRef!: ElementRef;
   @ViewChild('selectedPrio') addPrioRef!: ElementRef;
   @ViewChild('contentInput') addContentRef!: ElementRef;
-  @Output() comAdded = new EventEmitter<Issue>();
+  @Output() comAdded = new EventEmitter<IssueToSave>();
   ngOnInit(): void {}
   onClick() {
     if (this.notVisible === false) {
@@ -36,12 +38,19 @@ export class UserAddingCommentsComponent implements OnInit {
     }
   }
   onAddIssue() {
-    // const addName = this.addNameRef.nativeElement.value;
-    // const addTopic = this.addTopicRef.nativeElement.value;
-    // const addPrio = this.addPrioRef.nativeElement.value;
-    // const addContent = this.addContentRef.nativeElement.value;
-    // const newCom = new Comment(addName, addTopic, addPrio, addContent);
-    // this.comAdded.emit(newCom);
-    // this.notVisible = false;
+    let newIssue: IssueToSave = {
+      user_name: this.addNameRef.nativeElement.value,
+      description: this.addContentRef.nativeElement.value,
+      status: this.addPrioRef.nativeElement.value,
+      name: this.addTopicRef.nativeElement.value,
+      project_id: this.projectData.serviceId,
+    };
+    this.addNameRef.nativeElement.value = '';
+    this.addTopicRef.nativeElement.value = '';
+    this.addPrioRef.nativeElement.value = '';
+    this.addContentRef.nativeElement.value = '';
+
+    this.comAdded.emit(newIssue);
+    this.notVisible = false;
   }
 }

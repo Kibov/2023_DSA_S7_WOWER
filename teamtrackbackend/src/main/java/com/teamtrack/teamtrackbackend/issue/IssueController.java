@@ -1,7 +1,7 @@
 package com.teamtrack.teamtrackbackend.issue;
 
-import com.teamtrack.teamtrackbackend.issue.Classes.Issue;
 import com.teamtrack.teamtrackbackend.issue.Classes.IssuePost;
+import com.teamtrack.teamtrackbackend.issue.Classes.Issue;
 import com.teamtrack.teamtrackbackend.project.Project;
 import com.teamtrack.teamtrackbackend.project.ProjectRepository;
 import com.teamtrack.teamtrackbackend.user.User;
@@ -76,7 +76,12 @@ public class IssueController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         else {
-            User user = userRepository.getReferenceById(issue.getUser_id());
+            if (userRepository.findByUsername(issue.getUser_name()).isEmpty()){
+                return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            }
+            Integer userId = userRepository.findByUsername(issue.getUser_name()).get().getId();
+            User user = userRepository.getReferenceById(userId);
+
             Project project = projectRepository.getReferenceById(issue.getProject_id());
             Issue toSave = new Issue();
             toSave.setDescription(issue.getDescription());
@@ -85,7 +90,7 @@ public class IssueController {
             toSave.setProject(project);
             toSave.setName(issue.getName());
             issueRepository.save(toSave);
-            return new ResponseEntity<>(toSave, HttpStatus.CREATED);
+            return new ResponseEntity<>(toSave, HttpStatus.OK);
         }
     }
 
@@ -95,7 +100,11 @@ public class IssueController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         else {
-            User user = userRepository.getReferenceById(issuePost.getUser_id());
+            if (userRepository.findByUsername(issuePost.getUser_name()).isEmpty()){
+                return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+            }
+            Integer userId = userRepository.findByUsername(issuePost.getUser_name()).get().getId();
+            User user = userRepository.getReferenceById(userId);
             Project project = projectRepository.getReferenceById(issuePost.getProject_id());
             if (issuePost.getDescription().isEmpty() || issuePost.getStatus().isEmpty() || issuePost.getId().describeConstable().isEmpty() ){
                 return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

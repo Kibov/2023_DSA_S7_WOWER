@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ProjectInterface } from 'src/app/interfaces/project-interface';
 import { Project } from 'src/app/project.model';
-import { ProjectsServicesService } from 'src/app/services/projects-services.service';
+import { ProjectsServicesService } from 'src/app/services/project/projects-services.service';
 
 @Component({
   selector: 'app-user-projects-list',

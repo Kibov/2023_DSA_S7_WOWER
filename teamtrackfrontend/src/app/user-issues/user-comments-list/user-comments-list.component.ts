@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 import { Comment } from '../../comment.model';
 import { IssueService } from 'src/app/services/issue/issue.service';
-import { Issue } from 'src/app/interfaces/issue';
+import { Issue, IssueToSave } from 'src/app/interfaces/issue';
 
 @Component({
   selector: 'app-user-comments-list',
@@ -20,18 +20,24 @@ export class UserCommentsListComponent implements OnChanges {
   @Output() commentWasSelected = new EventEmitter<Issue>();
   comments: Issue[] = [];
   ngOnInit(): void {
-    this.issue.getIssueByProjId().subscribe((data) => {
-      console.log(data);
-
-      this.comments = data;
-      console.log(this.comments);
-    });
+    this.getData();
   }
   onComSelected(com: Issue) {
     this.commentWasSelected.emit(com);
   }
-  onIssueAdded(comment: Issue) {
-    this.comments.push(comment);
+  onIssueAdded(newIssue: IssueToSave) {
+    this.issue.createIssue(newIssue);
+
+    setTimeout(() => this.getData(), 100);
+  }
+
+  getData() {
+    this.issue.getIssueByProjId().subscribe((data) => {
+      console.log('test', data);
+
+      this.comments = data;
+      console.log(this.comments);
+    });
   }
 
   filterComments(event: Event) {
