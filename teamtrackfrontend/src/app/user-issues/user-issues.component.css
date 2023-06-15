@@ -7,13 +7,12 @@
   display: flex;
   justify-content: center;
   border: 3px solid #007bff93;
-  padding: 20px;
+  padding: 1rem;
 }
 .hereChoose:first-child {
   border-right: none;
 }
 .hereInfo {
-  display: flex;
   justify-content: center;
   border: 3px solid #007bff93;
 }

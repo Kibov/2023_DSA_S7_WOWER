@@ -7,7 +7,6 @@ import {
   Output,
   ViewChild,
 } from '@angular/core';
-import { Comment } from 'src/app/comment.model';
 import { Issue, IssueToSave } from 'src/app/interfaces/issue';
 import { IssueService } from 'src/app/services/issue/issue.service';
 import { ProjectDataService } from 'src/app/services/project/project-data.service';

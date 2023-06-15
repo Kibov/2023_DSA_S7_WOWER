@@ -6,7 +6,6 @@ import {
   Output,
   ViewEncapsulation,
 } from '@angular/core';
-import { Comment } from '../../../comment.model';
 import { Issue } from 'src/app/interfaces/issue';
 @Component({
   selector: 'app-user-comments',

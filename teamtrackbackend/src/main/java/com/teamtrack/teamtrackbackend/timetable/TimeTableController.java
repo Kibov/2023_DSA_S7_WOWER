@@ -40,15 +40,10 @@ public class TimeTableController {
     }
 
     @GetMapping("/time")
-    public ResponseEntity<Optional<TimeTable>> findByUserIdAndIssueId(@RequestParam Integer userId, @RequestParam Integer issueId){
-        Optional<TimeTable> time = timeTableRepository.findByUserIdAndIssueId(userId,issueId);
-       if (time.isEmpty())
-       {
-           return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-       }
-       else{
-           return ResponseEntity.ok(time);
-       }
+    public ResponseEntity<List<TimeTable>> findByUserIdAndIssueId(@RequestParam String userName, @RequestParam Integer issueId){
+        List<TimeTable> time = timeTableRepository.findByUserIdAndIssueId(userName,issueId);
+        return ResponseEntity.ok(time);
+
     }
     @PostMapping()
     public ResponseEntity<TimeTable> addTimeTable(@RequestBody TimeTableUpdate timeTablePost){

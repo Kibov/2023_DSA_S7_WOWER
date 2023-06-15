@@ -1,21 +1,35 @@
-<div class="userName row">
-  <div class="col-xs-12">
-    <p>Executor: {{ comment.user.username }}</p>
+<div class="row justify-content-center">
+  <div class="details col-9">
+    <div class="userName row">
+      <div class="col-xs-12">
+        <p>Executor: {{ comment.user.username }}</p>
+      </div>
+    </div>
+    <div class="topic row">
+      <div class="col-xs-12">
+        <label for="">Topic: {{ comment.name }}</label>
+      </div>
+    </div>
+    <div class="comment row">
+      <div class="col-xs-12 text-center">
+        <p
+          rows="12"
+          cols="60"
+          style="padding: 12px; margin: 10px"
+          readonly
+          >{{ comment.description }}</p
+        >
+      </div>
+    </div>
+  </div>
+
+</div>
+<div class="row">
+  <div class="time col-6">
+    <app-time></app-time>
+  </div>
+  <div class="comments col-6 ">
+    <app-comments></app-comments>
   </div>
 </div>
-<div class="topic row">
-  <div class="col-xs-12">
-    <label for="">Topic: {{ comment.name }}</label>
-  </div>
-</div>
-<div class="comment row">
-  <div class="col-xs-12 text-center">
-    <textarea
-      rows="12"
-      cols="60"
-      style="padding: 12px; margin: 10px"
-      readonly
-      >{{ comment.description }}</textarea
-    >
-  </div>
-</div>
+

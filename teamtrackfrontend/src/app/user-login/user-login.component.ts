@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService, token } from '../user-service.service';
 import { User } from '../user';
+import { UsserDataService } from '../services/user/usser-data.service';
 
 @Component({
   selector: 'app-user-login',
@@ -14,7 +15,8 @@ export class UserLoginComponent {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private userService: UserService
+    private userService: UserService,
+    private userData: UsserDataService
   ) {
     this.user = new User();
   }
@@ -22,6 +24,7 @@ export class UserLoginComponent {
   onSubmit() {
     this.userService.login(this.user).subscribe((result: token) => {
       this.userService.userToken = result.token;
+      this.userData.currentUser = this.user.username;
       this.gotoUserList();
     });
   }

@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { UserListComponent } from './user-list/user-list.component';
@@ -18,6 +18,9 @@ import { UserProjectsListComponent } from './user-projects/user-projects-list/us
 import { UserAddingProjectsComponent } from './user-projects/user-adding-projects/user-adding-projects.component';
 import { UserProjectComponent } from './user-projects/user-projects-list/user-project/user-project.component';
 import { CommentsDetailsComponent } from './user-issues/comments-details/comments-details.component';
+import { CommentsComponent } from './comments/comments.component';
+import { TimeComponent } from './time/time.component';
+import { AddCommentComponent } from './comments/add-comment/add-comment.component';
 
 @NgModule({
   declarations: [
@@ -35,8 +38,17 @@ import { CommentsDetailsComponent } from './user-issues/comments-details/comment
     UserAddingProjectsComponent,
     UserProjectComponent,
     CommentsDetailsComponent,
+    CommentsComponent,
+    TimeComponent,
+    AddCommentComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+  ],
   providers: [UserService],
   bootstrap: [AppComponent],
 })

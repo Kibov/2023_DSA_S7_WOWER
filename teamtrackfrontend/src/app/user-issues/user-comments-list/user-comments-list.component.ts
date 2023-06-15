@@ -5,9 +5,9 @@ import {
   Output,
   SimpleChanges,
 } from '@angular/core';
-import { Comment } from '../../comment.model';
 import { IssueService } from 'src/app/services/issue/issue.service';
 import { Issue, IssueToSave } from 'src/app/interfaces/issue';
+import { IssueDataService } from 'src/app/services/issue/issue-data.service';
 
 @Component({
   selector: 'app-user-comments-list',
@@ -15,7 +15,10 @@ import { Issue, IssueToSave } from 'src/app/interfaces/issue';
   styleUrls: ['./user-comments-list.component.css'],
 })
 export class UserCommentsListComponent implements OnChanges {
-  constructor(private issue: IssueService) {}
+  constructor(
+    private issue: IssueService,
+    private issueData: IssueDataService
+  ) {}
   ngOnChanges(changes: SimpleChanges): void {}
   @Output() commentWasSelected = new EventEmitter<Issue>();
   comments: Issue[] = [];
@@ -23,6 +26,12 @@ export class UserCommentsListComponent implements OnChanges {
     this.getData();
   }
   onComSelected(com: Issue) {
+    console.log(this.issueData.issueId, com.id);
+
+    this.issueData.issueId = com.id;
+    this.issueData.issueName = com.name;
+    console.log(com.name);
+
     this.commentWasSelected.emit(com);
   }
   onIssueAdded(newIssue: IssueToSave) {

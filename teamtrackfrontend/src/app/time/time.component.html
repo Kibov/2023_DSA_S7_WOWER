@@ -1,0 +1,40 @@
+<button class="btn btn-info" (click)="showLogTime()">Log time</button>
+<div *ngIf="isLogTimeVisible">
+  <div class="card card-body">
+    <form>
+      <div class="form-group">
+        <label for="dateStart"> Select day</label><br>
+        <input type="date" #dateStart >
+      </div>
+      <div class="form-group">
+        <label for="timeStart">Select time of start work</label><br>
+        <input type="time"  #timeStart>
+      </div>
+      <div class="form-group">
+        <label for="dateEnd"> Select day</label><br>
+        <input type="date" #dateEnd >
+      </div>
+      <div class="form-group">
+        <label for="timeEnd">Select time of start work</label><br>
+        <input type="time"  #timeEnd>
+      </div>
+      <button class="btn btn-primary" (click)="logTime()"> Save </button>
+    </form>
+  </div>
+</div>
+<div class="overflow h-75">
+  <table class="table table-hover">
+    <thead>
+      <th>User name</th>
+      <th>Start work</th>
+      <th>End work</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of timeTable">
+        <td>{{item.user.username}}</td>
+        <td>{{item.startedat | date:'yyyy-MM-dd h:mm'}}</td>
+        <td>{{item.finishedat | date:'yyyy-MM-dd h:mm' }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

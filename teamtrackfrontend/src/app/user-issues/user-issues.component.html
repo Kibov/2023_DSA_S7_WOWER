@@ -4,12 +4,12 @@
 </div>
 <div class="container">
   <div class="row">
-    <div class="hereChoose col-sm-5">
+    <div class="hereChoose col-sm-3">
       <app-user-comments-list
         (commentWasSelected)="selectedComment = $event"
       ></app-user-comments-list>
     </div>
-    <div class="hereInfo col-sm-7">
+    <div class="hereInfo col-9">
       <app-comments-details
         *ngIf="selectedComment; else infoText"
         [comment]="selectedComment"
