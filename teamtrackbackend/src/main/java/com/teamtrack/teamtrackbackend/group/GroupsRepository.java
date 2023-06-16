@@ -11,10 +11,8 @@ import java.util.Optional;
 public interface GroupsRepository extends JpaRepository<Groups, Integer> {
     Optional<Groups> findById(Integer group);
 
-    @Query("SELECT g.id, g.name, u.id, u.username, p.id, p.project_name " +
+    @Query("SELECT g.id, g.name, u.id, u.username " +
             "FROM Groups g " +
-            "JOIN g.users u " +
-            "JOIN g.projects p " +
-            "WHERE g.id = :groupId") // Example: Filtering by groupId
-    List<Object[]> findAllGroupsWithUsersAndProjects(@Param("groupId") Integer groupId);
+            "JOIN g.users u")
+    List<Object[]> findAllGroupsWithUsers();
 }

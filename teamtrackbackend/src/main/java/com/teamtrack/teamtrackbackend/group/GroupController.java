@@ -1,10 +1,8 @@
 package com.teamtrack.teamtrackbackend.group;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -16,10 +14,17 @@ public class GroupController {
 
     public GroupController(GroupsRepository groupsRepository) {this.groupsRepository = groupsRepository;}
 
+    @PostMapping
+    public ResponseEntity<Groups> createGroup(@RequestBody Groups group) {
+        Groups savedGroup = groupsRepository.save(group);
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedGroup);
+    }
+
+
     @GetMapping
     public ResponseEntity<List<Object[]>> getGroup() {
-        List<Object[]> groupList = groupsRepository.findAllGroupsWithUsersAndProjects();
-        //Returns group_id, group_name, user_id, username, project_id, project_name
+        List<Object[]> groupList = groupsRepository.findAllGroupsWithUsers();
+        //Returns group_id, group_name, user_id, username
         return ResponseEntity.ok(groupList);
     }
 }
