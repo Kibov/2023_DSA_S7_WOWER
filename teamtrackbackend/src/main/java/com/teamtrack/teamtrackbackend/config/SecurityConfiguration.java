@@ -1,11 +1,10 @@
 package com.teamtrack.teamtrackbackend.config;
 
-import jakarta.servlet.Filter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationProvider;
-import org.springframework.security.config.annotation.web.HttpSecurityBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -26,7 +25,12 @@ public class SecurityConfiguration {
                 .csrf()
                 .disable()
                 .authorizeHttpRequests()
-                .requestMatchers("/api/v1/auth/**").permitAll()
+                .requestMatchers("/api/v1/auth/users").hasAuthority("Admin")
+                    .requestMatchers("/api/v1/auth/group").hasAuthority("Admin")
+                    .requestMatchers("/api/v1/auth/groupuser").hasAuthority("Admin")
+                    .requestMatchers("/api/v1/auth/users").hasAuthority("Admin")
+                    .requestMatchers(HttpMethod.POST, "api/v1/auth/projects").hasAnyAuthority("Project Manager", "Admin")
+                    .requestMatchers("/api/v1/auth/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .sessionManagement()
