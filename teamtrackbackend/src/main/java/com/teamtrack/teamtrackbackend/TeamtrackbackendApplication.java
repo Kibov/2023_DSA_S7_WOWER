@@ -26,6 +26,10 @@ public class TeamtrackbackendApplication {
 		return args -> {
 			userRepository.findAll().forEach(user -> {
 				List<Project> projects = projectRepository.findByUserId(user.getId());
+				System.out.println("Authorities for user " + user.getUsername() + ":");
+				user.getAuthorities().forEach(authority -> {
+					System.out.println(authority.getAuthority());
+				});
 				System.out.println("Projects for user " + user.getUsername() + ":");
 				projects.forEach(System.out::println);
 				System.out.println();
