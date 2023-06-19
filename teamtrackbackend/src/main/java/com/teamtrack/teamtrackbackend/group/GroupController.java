@@ -22,8 +22,8 @@ public class GroupController {
 
 
     @GetMapping
-    public ResponseEntity<List<Object[]>> getGroup() {
-        List<Object[]> groupList = groupsRepository.findAllGroupsWithUsers();
+    public ResponseEntity<List<Groups>> getGroup() {
+        List<Groups> groupList = groupsRepository.findAll();
         //Returns group_id, group_name, user_id, username
         return ResponseEntity.ok(groupList);
     }

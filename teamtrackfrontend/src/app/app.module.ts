@@ -21,7 +21,7 @@ import { CommentsDetailsComponent } from './user-issues/comments-details/comment
 import { CommentsComponent } from './comments/comments.component';
 import { TimeComponent } from './time/time.component';
 import { AddCommentComponent } from './comments/add-comment/add-comment.component';
-import { GroupsComponent } from './groups/groups/groups.component';
+import { GroupsDisplayComponent } from './groups-display/groups-display.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +42,7 @@ import { GroupsComponent } from './groups/groups/groups.component';
     CommentsComponent,
     TimeComponent,
     AddCommentComponent,
-    GroupsComponent,
+    GroupsDisplayComponent,
   ],
   imports: [
     BrowserModule,

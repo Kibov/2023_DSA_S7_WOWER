@@ -14,5 +14,5 @@ public interface GroupsRepository extends JpaRepository<Groups, Integer> {
     @Query("SELECT g.id, g.name, u.id, u.username " +
             "FROM Groups g " +
             "LEFT JOIN g.users u")
-    List<Object[]> findAllGroupsWithUsers();
+    List<Groups[]> findAllGroupsWithUsers();
 }

@@ -8,6 +8,10 @@ export interface GroupInterface {
   users: User[];
 }
 
+export interface GroupInterfacePost {
+  name: string;
+}
+
 export interface GroupUserInterface {
   groupId: number;
   userId: number;
