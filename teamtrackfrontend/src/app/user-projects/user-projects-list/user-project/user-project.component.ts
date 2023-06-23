@@ -29,6 +29,7 @@ export class UserProjectComponent implements OnInit {
 
   goToMore() {
     this.projectData.serviceId = this.project.id;
+    this.projectData.serviceName = this.project.project_name;
     this.projectSelected.emit();
   }
 }
