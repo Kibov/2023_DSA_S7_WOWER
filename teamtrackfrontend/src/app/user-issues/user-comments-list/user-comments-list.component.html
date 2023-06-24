@@ -1,26 +1,27 @@
 <!-- todo:  -->
 <!-- filter https://material.angular.io/components/table/examples -->
 <!-- photo discord -->
-<ul class="list-group">
-  <div class="addingbutton">
-    <app-user-adding-comments
-      (comAdded)="onIssueAdded($event)"
-    ></app-user-adding-comments>
+<div class="addingbutton">
+  <app-user-adding-comments
+    (comAdded)="onIssueAdded($event)"
+  ></app-user-adding-comments>
+</div>
+<div>
+  <div style="display: flex; justify-content: center">
+    <input
+      type="text"
+      (keyup)="filterComments($event)"
+      placeholder="Search comments (todo)"
+      style="margin-left: 5px"
+    />
   </div>
-  <div>
-    <div style="display: flex; justify-content: center">
-      <input
-        type="text"
-        (keyup)="filterComments($event)"
-        placeholder="Search comments (todo)"
-        style="margin-left: 5px"
-      />
-    </div>
+</div>
+
+<ul class="list-group">
     <app-user-comments
       *ngFor="let com of comments"
       [comment]="com"
       (commentSelected)="onComSelected(com)"
     >
     </app-user-comments>
-  </div>
 </ul>

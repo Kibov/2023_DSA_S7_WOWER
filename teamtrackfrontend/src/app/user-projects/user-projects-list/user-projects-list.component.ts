@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ProjectInterface } from 'src/app/interfaces/project-interface';
 import { Project } from 'src/app/project.model';
-import { ProjectsServicesService } from 'src/app/services/projects-services.service';
+import { ProjectsServicesService } from 'src/app/services/project/projects-services.service';
 
 @Component({
   selector: 'app-user-projects-list',
@@ -13,20 +13,7 @@ export class UserProjectsListComponent implements OnInit {
   @Output() projWasSelected = new EventEmitter<ProjectInterface>();
 
   dateOfCreation: Date = new Date();
-  projects: ProjectInterface[] = [
-    {
-      id: 1,
-      project_name: 'Proj1',
-      description: 'Proj',
-      created_at: this.dateOfCreation,
-    },
-    {
-      id: 2,
-      project_name: 'Proj2',
-      description: 'Proj2',
-      created_at: this.dateOfCreation,
-    },
-  ];
+  projects: ProjectInterface[] = [];
   ngOnInit(): void {
     this.getAllProjects();
   }

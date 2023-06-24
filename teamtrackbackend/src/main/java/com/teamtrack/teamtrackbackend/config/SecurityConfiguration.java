@@ -22,10 +22,12 @@ public class SecurityConfiguration {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-            http
+        http
                 .csrf()
                 .disable()
                 .authorizeHttpRequests()
+                //.requestMatchers("/api/v1/auth/(group|groupuser)").hasAnyAuthority("Admin", "Project Manager")
+                //.requestMatchers("/api/v1/auth/users").hasAuthority("Admin")
                 .requestMatchers("/api/v1/auth/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
@@ -37,5 +39,6 @@ public class SecurityConfiguration {
 
         return http.build();
     }
-
 }
+
+

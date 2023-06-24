@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Issue, IssueToSave } from 'src/app/interfaces/issue';
 import { UserService } from 'src/app/user-service.service';
-import { Comment } from 'src/app/comment.model';
 
 @Injectable({
   providedIn: 'root',

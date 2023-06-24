@@ -1,0 +1,32 @@
+<button class="btn btn-info" (click)="addGroup()">Add group</button>
+<div *ngIf="isAddGroup">
+  <div class="card card-body">
+    <form>
+      <div class="form-group">
+        <label for="groupName"> Select day</label><br>
+        <input type="text" #groupName >
+      </div>
+      <button class="btn btn-primary" (click)="saveGroup()"> Save </button>
+    </form>
+  </div>
+</div>
+
+
+<div class="overflow h-75">
+    <table class="table table-hover">
+      <thead>
+        <th>Group name</th>
+        <th>Users</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of items; let i=index">
+          <td>{{item.name}}</td>
+            <td *ngFor="let users of item.users">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">{{users.username}}</li>
+                </ul>
+            </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>

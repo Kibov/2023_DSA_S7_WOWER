@@ -17,12 +17,12 @@ export interface UserInterface {
 export class UserService {
   private usersUrl: string;
   private authUrl: string = 'http://127.0.0.1:8080/api/v1/auth';
-  private _userToken!: string;
+  private _userToken!: string | null;
 
   public get userToken(): string {
-    return this._userToken;
+    return this._userToken as string;
   }
-  public set userToken(value: string) {
+  public set userToken(value: string | null) {
     this._userToken = value;
   }
 

@@ -6,6 +6,7 @@
   color: black;
   font-family: Arial, Helvetica, sans-serif;
 }
-th {
-  white-space: break-spaces;
+
+p{
+  margin-bottom: 0.2rem;
 }

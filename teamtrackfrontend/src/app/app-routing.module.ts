@@ -6,6 +6,8 @@ import { UserLoginComponent } from './user-login/user-login.component';
 import { UserSignUpComponent } from './user-sign-up/user-sign-up.component';
 import { UserIssuesComponent } from './user-issues/user-issues.component';
 import { UserProjectsComponent } from './user-projects/user-projects.component';
+import { TimeComponent } from './time/time.component';
+import { GroupsDisplayComponent } from './groups-display/groups-display.component';
 
 const routes: Routes = [
   { path: 'users', component: UserListComponent },
@@ -14,10 +16,10 @@ const routes: Routes = [
   { path: 'adduser', component: UserFormComponent },
   { path: 'login', component: UserLoginComponent },
   { path: 'signup', component: UserSignUpComponent },
-  { path: 'issues', component: UserIssuesComponent , pathMatch: 'full'  },
+  { path: 'issues', component: UserIssuesComponent, pathMatch: 'full' },
   { path: 'projects', component: UserProjectsComponent },
-  { path: '', component: UserFormComponent, pathMatch: 'full' }
-
+  { path: 'groups', component: GroupsDisplayComponent },
+  { path: '', component: TimeComponent, pathMatch: 'full' },
 ];
 
 @NgModule({

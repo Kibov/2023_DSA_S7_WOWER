@@ -1,18 +1,8 @@
-<a routerLink="/issues" class="list-group-item clearfix" (click)="onSelected()">
-  <div class="pull-left">
-    <table class="list-group-item-heading">
-      <th>User:</th>
-      {{
-        comment.user.username
-      }}
-      <th><span> | </span> Topic: <span> </span></th>
-      {{
-        comment.description
-      }}
-      <th><span> | </span>Prio: <span> </span></th>
-      {{
-        comment.status
-      }}
-    </table>
-  </div>
-</a>
+<div class="list-group-item clearfix" (click)="onSelected()">
+  <p>
+    Topic: {{comment.name}}
+  </p>
+  <p>
+    Prio: {{comment.status}}
+  </p>
+</div>

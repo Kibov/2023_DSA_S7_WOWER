@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ProjectInterface } from '../interfaces/project-interface';
+import { ProjectInterface } from '../../interfaces/project-interface';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { UserService } from '../user-service.service';
-import { Project } from '../project.model';
+import { UserService } from '../../user-service.service';
+import { Project } from '../../project.model';
 
 @Injectable({
   providedIn: 'root',

@@ -1,5 +1,6 @@
 package com.teamtrack.teamtrackbackend.user;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -26,6 +27,17 @@ public class UserController {
             userStringList.add(userString);
         }
         return ResponseEntity.ok(userList);
+    }
+
+    @GetMapping("/{name}")
+    public ResponseEntity<Integer> getUsersId(@PathVariable String name){
+        Integer userFound = userRepository.findByUsername(name).get().getId();
+        if (userFound != null){
+            return ResponseEntity.ok(userFound);
+        }
+        else{
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
     @GetMapping("/test")
